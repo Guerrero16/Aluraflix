@@ -1,6 +1,10 @@
 import styled from "styled-components";
-import banner from '../../assets/img/banner.png'
+import banner from '../../assets/img/banner.png';
 import { Boton, ContenidoParcial } from "../../UI/Estilos";
+
+//Recursos
+import imagenDeEjemplo from "../../assets/img/video.png";
+import React from "react";
 
 const Anuncio = styled.div`
     background-image: linear-gradient(0deg, ${({ theme }) => theme.oscuro} 0%, rgba(0,0,0,0) 100%),
@@ -56,9 +60,9 @@ const AnuncioDetalle = styled.p`
 
 const AnuncioLink = styled.a`
     display: none;
-    @media screen and (min-width: 768px) {
-        
+    @media screen and (min-width: 768px) { 
     }
+    
     @media screen and (min-width: 1024px) {
         display: initial;
         width: calc(40% - 1rem);
@@ -91,11 +95,12 @@ export function Banner() {
             <AnuncioContenido>
                 <AnuncioDescripcion>
                     <AnuncioTitulo>Challenge React</AnuncioTitulo>
-                    <AnuncioDetalle>Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.</AnuncioDetalle>
+                    <AnuncioDetalle>Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.
+                    </AnuncioDetalle>
                     <AnuncioBoton tipo='completo' color='#fff' href="#" >Ver</AnuncioBoton>
                 </AnuncioDescripcion>
                 <AnuncioLink href="https://youtu.be/C_wBJGhauMY" target="__blank">
-                    <AnuncioImagen src='https://ik.imagekit.io/noj6wnuqy/AluraFLix/tr:f-webp/video.2d556f83d1075ca96dc0.png?updatedAt=1683685012733' />
+                    <AnuncioImagen src={imagenDeEjemplo} />
                 </AnuncioLink>
             </AnuncioContenido>
         </Anuncio>

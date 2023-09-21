@@ -5,7 +5,7 @@ import { Home } from "./pages/Home";
 import { HeaderCabecera } from "./components/Header";
 import { Categoria } from "./pages/Categoria";
 import { Video } from "./pages/Video";
-import { Footer } from "./components/Footer";
+import { PiePagina } from "./components/Footer";
 
 import { GlobalStyles } from "./GlobalStyles";
 import { ThemeProvider } from "styled-components";
@@ -25,7 +25,7 @@ function App() {
             <Route path="/categoria" element={<Categoria />} />
 
           </Routes>
-          <Footer />
+          <PiePagina />
         </ThemeProvider>
       </Router>
 

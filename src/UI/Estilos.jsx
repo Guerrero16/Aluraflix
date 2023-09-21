@@ -23,32 +23,31 @@ export const Logo = styled.img`
     width: auto;
 `;
 
-// export const Imagen = styled.img`
-//     width: 100%;
-//     height: auto;
-// `;
+export const Imagen = styled.img`
+    width: 100%;
+    height: auto;
+`;
 
-// export const Boton = styled.a`
-//     text-transform: capitalize;
-//     text-align: center;
-//     padding: .5rem 2rem;
-//     display: inline-block;
-//     line-height: 1;
-//     box-sizing: border-box;
-//     border-radius: .25rem;
-//     font-weight: 300;
-//     font-size: 1rem;
-//     ${
-//     ({ tipo, color }) => {
-//         switch (tipo) {
-//             case 'lineas':
-//                 return `display: inline-block; border: 1px solid ${color}; color: ${color};`
-//             default:
-//                 return `display: inline-block; background-color: ${color}; color: black;`
-//         }
-//     }
-// };
-// `;
+export const Boton = styled.a`
+    text-transform: capitalize;
+    text-align: center;
+    padding: .5rem 2rem;
+    display: inline-block;
+    line-height: 1;
+    box-sizing: border-box;
+    border-radius: .25rem;
+    font-weight: 300;
+    font-size: 1rem;
+    ${({ tipo, color }) => {
+        switch (tipo) {
+            case 'lineas':
+                return `display: inline-block; border: 1px solid ${color}; color: ${color};`
+            default:
+                return `display: inline-block; background-color: ${color}; color: black;`
+        }
+    }
+    };
+`;
 
 // export const FormBoton = styled.button`
 // text - transform: capitalize;
