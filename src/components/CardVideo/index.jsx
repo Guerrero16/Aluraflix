@@ -14,7 +14,7 @@ const CarrucelImagen = styled(Imagen)`
 
 export function CardVideo({ link, src, color }) {
     return (
-        <CardVideoLink href={link} >
+        <CardVideoLink href={link} target="_blank" >
             <CarrucelImagen src={src} color={color} ></CarrucelImagen>
         </CardVideoLink>
     );

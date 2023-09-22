@@ -14,24 +14,18 @@ import { temaClaro } from "./UI/Temas";
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={temaClaro}>
+      <GlobalStyles />
       <Router>
-        <ThemeProvider theme={temaClaro}>
-          <GlobalStyles />
-          <HeaderCabecera />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/video" element={<Video />} />
-            <Route path="/categoria" element={<Categoria />} />
-
-          </Routes>
-          <PiePagina />
-        </ThemeProvider>
+        <HeaderCabecera />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/video" element={<Video />} />
+          <Route path="/categoria" element={<Categoria />} />
+        </Routes>
+        <PiePagina />
       </Router>
-
-    </>
-
-
+    </ThemeProvider>
 
   );
 }
