@@ -11,7 +11,7 @@ import { Contexto } from "../../Contexto";
 
 export function Carrusel({ categoria_id, color }) {
     const datos = useContext(Contexto);
-    const videos = datos.videos.filter((dato) => dato.categoria === categoria_id);
+    const videos = datos.videos.filter((dato) => dato.categoria+'' === '' +categoria_id);
     return (
         <Swiper
             spaceBetween={16}

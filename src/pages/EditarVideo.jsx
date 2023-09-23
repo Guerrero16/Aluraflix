@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { ContenidoParcial, FormBoton, BotonLink, GrupoBotones, BotonesSeparador } from "../UI/Estilos";
+import { BotonLink, ContenidoParcial, FormBoton, GrupoBotones, BotonesSeparador } from "../UI/Estilos";
 import * as yup from 'yup';
 import { useFormik } from "formik";
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from "@mui/material";
-import { Tabla } from "../components/Tabla";
-import { crearVideo, eliminarVideo } from "../services/videos.services";
-import { useContext } from "react";
 import { Contexto } from "../Contexto";
+import { useNavigate, useParams } from "react-router-dom";
+import { actualizarVideo, obtenerVideo } from "../services/videos.services";
+import { useEffect, useState, useContext } from "react";
+
 
 
 const Principal = styled.main`
@@ -51,7 +52,6 @@ const Selector = styled(FormControl)`
         color: ${({ theme }) => theme.texto};
     }
 `;
-
 const PrincipalTitulo = styled.h1`
     color: ${({ theme }) => theme.texto};
     text-align: center;
@@ -65,11 +65,17 @@ const esquemaDeValidacion = yup.object({
         .required('El campo es obligatorio'),
     enlace_video: yup
         .string()
-        .url('Ingrese un enlace valido')
+        // .matches(
+        //     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        //     'Ingrese una url valida.'
+        // )
         .required('El campo es obligatorio'),
     enlace_imagen: yup
         .string()
-        .url('Ingrese un enlace valido')
+        // .matches(
+        //     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        //     'Ingrese una url valida.'
+        // )
         .required('El campo es obligatorio'),
     categoria: yup
         .string()
@@ -83,34 +89,30 @@ const esquemaDeValidacion = yup.object({
         .required('El campo es obligatorio'),
 });
 
-
-export function Video() {
+export function EditarVideo() {
     const datos = useContext(Contexto)
-    const { videos, categorias, valor, recargar } = datos;
-
-    const colmnas = [
-        { field: 'titulo', headerName: 'Titulo', flex: 1 },
-        { field: 'categoria', headerName: 'Categoria' },
-    ]
-
+    const { categorias, recargar, valor } = datos;
+    const { id } = useParams();
+    const [video, setVideo] = useState();
+    const navegacion = useNavigate();
     function actualizar() {
         recargar(valor + 1);
     }
+
     const formik = useFormik({
         initialValues: {
-            titulo: '',
-            enlace_video: '',
-            enlace_imagen: '',
-            categoria: '',
-            descripcion: '',
-            codigo: '',
+            titulo: video ? video.titulo : '',
+            enlace_video: video ? video.link_video : '',
+            enlace_imagen: video ? video.link_imagen : '',
+            categoria: video ? video.categoria : '',
+            descripcion: video ? video.descripcion : '',
+            codigo: video ? video.codigo : '',
         },
         enableReinitialize: true,
         validationSchema: esquemaDeValidacion,
         onSubmit: (values) => {
             const { titulo, enlace_video, enlace_imagen, categoria, descripcion, codigo } = values
-            formik.resetForm();
-            crearVideo({
+            actualizarVideo(id, {
                 titulo,
                 link_video: enlace_video,
                 link_imagen: enlace_imagen,
@@ -119,14 +121,25 @@ export function Video() {
                 codigo
             })
                 .then(() => {
-                    actualizar();
-                })
+                    actualizar()
+                    navegacion('/video')
+                });
         },
     });
+
+
+    useEffect(() => {
+        async function llamar() {
+            const respuesta = await obtenerVideo(id);
+            setVideo(respuesta)
+        }
+        llamar()
+    }, [id])
+
     return (
         <Principal>
             <PrincipalContenido>
-                <PrincipalTitulo>Nuevo Video</PrincipalTitulo>
+                <PrincipalTitulo>Editar Video</PrincipalTitulo>
                 <form onSubmit={formik.handleSubmit} autoComplete="off">
                     <Campo
                         fullWidth
@@ -164,18 +177,6 @@ export function Video() {
                         error={formik.touched.enlace_imagen && Boolean(formik.errors.enlace_imagen)}
                         helperText={formik.touched.enlace_imagen && formik.errors.enlace_imagen}
                     />
-                    <Campo
-                        fullWidth
-                        margin="normal"
-                        id="descripcion"
-                        name="descripcion"
-                        label="Descripción"
-                        variant="filled"
-                        value={formik.values.descripcion}
-                        onChange={formik.handleChange}
-                        error={formik.touched.descripcion && Boolean(formik.errors.descripcion)}
-                        helperText={formik.touched.descripcion && formik.errors.descripcion}
-                    />
                     <Selector
                         fullWidth
                         margin="normal"
@@ -204,6 +205,18 @@ export function Video() {
                     <Campo
                         fullWidth
                         margin="normal"
+                        id="descripcion"
+                        name="descripcion"
+                        label="Descripción"
+                        variant="filled"
+                        value={formik.values.descripcion}
+                        onChange={formik.handleChange}
+                        error={formik.touched.descripcion && Boolean(formik.errors.descripcion)}
+                        helperText={formik.touched.descripcion && formik.errors.descripcion}
+                    />
+                    <Campo
+                        fullWidth
+                        margin="normal"
                         id="codigo"
                         name="codigo"
                         label="Codigo"
@@ -213,22 +226,20 @@ export function Video() {
                         error={formik.touched.codigo && Boolean(formik.errors.codigo)}
                         helperText={formik.touched.codigo && formik.errors.codigo}
                     />
-
                     <GrupoBotones >
                         <BotonesSeparador >
                             <FormBoton color="#2A7AE4" type="submit">
-                                Guardar
+                                Actualizar
                             </FormBoton>
                             <FormBoton color="#cfcfcf" type="reset" onClick={formik.resetForm}>
                                 Limpiar
                             </FormBoton>
                         </BotonesSeparador>
-                        <BotonLink tipo='lineas' color="#cfcfcf" to='../categoria' >
-                            Nueva Categoria
+                        <BotonLink tipo='lineas' color="#cfcfcf" to='../video' >
+                            Regresar
                         </BotonLink>
                     </GrupoBotones>
                 </form>
-                <Tabla db={videos} colmnas={colmnas} actualizar={actualizar} eliminar={eliminarVideo} />
             </PrincipalContenido>
         </Principal>
     );

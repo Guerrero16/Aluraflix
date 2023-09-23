@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import banner from '../../assets/img/banner.png';
 import { Boton, ContenidoParcial } from "../../UI/Estilos";
-
-//Recursos
-import imagenDeEjemplo from "../../assets/img/video.png";
 import React from "react";
 
 const Anuncio = styled.div`
@@ -100,7 +97,7 @@ export function Banner() {
                     <AnuncioBoton tipo='completo' color='#fff' href="#" >Ver</AnuncioBoton>
                 </AnuncioDescripcion>
                 <AnuncioLink href="https://youtu.be/C_wBJGhauMY" target="__blank">
-                    <AnuncioImagen src={imagenDeEjemplo} />
+                    <AnuncioImagen src='https://ik.imagekit.io/noj6wnuqy/AluraFLix/tr:f-webp/video.2d556f83d1075ca96dc0.png?updatedAt=1683685012733' />
                 </AnuncioLink>
             </AnuncioContenido>
         </Anuncio>
