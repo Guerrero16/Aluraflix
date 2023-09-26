@@ -10,8 +10,8 @@
 
 ## ¿Cómo correr el proyecto?
 Después de bajar el proyecto, acceda a él a través de su terminal con los comandos:
-npm install
-npm start
+- npm install
+- npm start
 
 ## Descripción del proyecto  
 
