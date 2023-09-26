@@ -19,8 +19,10 @@ export const ContenidoParcial = styled.div`
 `;
 
 export const Logo = styled.img`
-    height: 2.4rem;
-    width: auto;
+ max-width: 168px;
+ @media (max-width: 800px) {
+      max-width: 130px;
+    }
 `;
 
 export const Imagen = styled.img`
@@ -77,7 +79,7 @@ text - transform: capitalize;
 text - align: center;
 padding: calc(.5rem - 2px) calc(2rem - 2px);
 line - height: 1;
-box - sizing: border - box;
+box - sizing: border-box;
 border - radius: .25rem;
 font - weight: 300;
 font - size: 1rem;

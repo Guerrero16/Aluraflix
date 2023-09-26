@@ -2,11 +2,12 @@ import React from "react";
 import { styled } from "styled-components";
 import { ContenidoParcial, Logo } from "../../UI/Estilos";
 import logo from "../../assets/img/Logo.png";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const Header = styled.div`
-    padding: 1rem;
+    padding-left: 5%;
+    padding-right: 5%;
     background-color: ${({ theme }) => theme.oscuro};
     border-bottom: solid 1px ${({ theme }) => theme.primero};
     text-align: center;
@@ -16,57 +17,64 @@ const HeaderContenido = styled(ContenidoParcial)`
     display: flex;
     justify-content: center;
     justify-content: space-between;
+    @media (max-width: 800px) {
+      justify-content: center;
 `;
 
 const HeaderBoton = styled(Link)`
-    text-transform: capitalize;
-    text-align: center;
-    padding: .5rem 2rem;
-    line-height: 1;
+    color: var(--white);
+    border: 1px solid var(--white);
     box-sizing: border-box;
-    border-radius: .25rem;
-    font-weight: 300;
-    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px 14px;
+    margin: 10px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    outline: none;
+    border-radius: 5px;
     text-decoration: none;
-    ${({ type, color }) => {
-        switch (type) {
-            case 'lineas':
-                return `
-                    display: inline-block;
-                    border: 1px solid ${color}; 
-                    color: ${color};
-                `
-            default:
-                return `
-                    display: inline-block;
-                    background-color: ${color}; 
-                    color: black;
-                `
-        }
+    display: inline-block;
+    transition: opacity .3s;
+    &:hover,
+    &:focus {
+    opacity: .5;
+    color: var(--colorLogo);
+  }
+
+    @media (max-width: 800px) {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--primary);
+        border-radius: 0;
+        border: 0;
+        text-align: center;
     }
-    };
-    display: none;
-    @media screen and (min-width: 1024px) {
-        display: initial;
-    }
+
 `;
 
 const HeaderLink = styled(Link)`
     display: flex;
     align-items: center;
+    margin: 5px;
+ 
+    @media (max-width: 800px){
+        margin: 10px
+    }
 `;
 
 
 export function HeaderCabecera() {
+    const url = useLocation()
     return (
         <Header>
             <HeaderContenido>
                 <HeaderLink to="/">
                     <Logo src={logo} alt="Logo aluraflix" />
                 </HeaderLink>
-                <HeaderBoton type='lineas' color="#fff" to='/video'>
-                    Nuevo Video
-                </HeaderBoton>
+                {url.pathname === '/' && <HeaderBoton  type='lineas' color="#fff" to='/video'>Nuevo Video</HeaderBoton>}
             </HeaderContenido>
         </Header>
     );

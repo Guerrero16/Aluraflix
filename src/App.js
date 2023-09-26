@@ -7,6 +7,7 @@ import { Video } from "./pages/Video";
 import { PiePagina } from "./components/Footer";
 import { Error404 } from "./pages/Error404";
 import { GlobalStyles } from "./GlobalStyles";
+import "./index.css";
 import { ThemeProvider } from "styled-components";
 import { temaClaro } from "./UI/Temas";
 import { EditarVideo } from "./pages/EditarVideo";

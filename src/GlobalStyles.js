@@ -1,6 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
+* {
+        font-size: 16px;
+        font-family: 'Roboto';
+        font-weight: 400;
+    }
+
+    body {
+        background-color: ${({ theme }) => theme.oscuro};
+    }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -18,7 +27,6 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
         vertical-align: baseline;
     }
     
@@ -50,13 +58,4 @@ export const GlobalStyles = createGlobalStyle`
         border-spacing: 0;
     }
 
-    * {
-        font-size: 16px;
-        font-family: 'Roboto';
-        font-weight: 400;
-    }
-
-    body {
-        background-color: ${({ theme }) => theme.oscuro};
-    }
 `

@@ -9,6 +9,7 @@ const Anuncio = styled.div`
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    padding-top:20rem;
 `;
 
 const AnuncioContenido = styled(ContenidoParcial)`
@@ -29,6 +30,7 @@ const AnuncioDescripcion = styled.div`
     justify-content: end;
     align-items: center;
     color: ${({ theme }) => theme.texto};
+    paddingtop:2rem;
     padding: 1rem 0;
     box-sizing: border-box;
     text-align: center;
@@ -94,7 +96,7 @@ export function Banner() {
                     <AnuncioTitulo>Challenge React</AnuncioTitulo>
                     <AnuncioDetalle>Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.
                     </AnuncioDetalle>
-                    <AnuncioBoton tipo='completo' color='#fff' href="#" >Ver</AnuncioBoton>
+                    <AnuncioBoton tipo='completo' color='#406eee' href="#" >Ver</AnuncioBoton>
                 </AnuncioDescripcion>
                 <AnuncioLink href="https://youtu.be/C_wBJGhauMY" target="__blank">
                     <AnuncioImagen src='https://ik.imagekit.io/noj6wnuqy/AluraFLix/tr:f-webp/video.2d556f83d1075ca96dc0.png?updatedAt=1683685012733' />
