@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Guerrero16/Aluraflix/static/css/main.3e05ea8f.css",
-    "main.js": "/Guerrero16/Aluraflix/static/js/main.8c0db413.js",
-    "static/js/787.a582c3f2.chunk.js": "/Guerrero16/Aluraflix/static/js/787.a582c3f2.chunk.js",
-    "static/media/banner.png": "/Guerrero16/Aluraflix/static/media/banner.54249eb4da785d37b570.png",
-    "static/media/Logo.png": "/Guerrero16/Aluraflix/static/media/Logo.3785e6f59ef26f0f336e.png",
-    "index.html": "/Guerrero16/Aluraflix/index.html",
-    "main.3e05ea8f.css.map": "/Guerrero16/Aluraflix/static/css/main.3e05ea8f.css.map",
-    "main.8c0db413.js.map": "/Guerrero16/Aluraflix/static/js/main.8c0db413.js.map",
-    "787.a582c3f2.chunk.js.map": "/Guerrero16/Aluraflix/static/js/787.a582c3f2.chunk.js.map"
+    "main.css": "/Aluraflix/static/css/main.3e05ea8f.css",
+    "main.js": "/Aluraflix/static/js/main.b375eac0.js",
+    "static/js/787.a582c3f2.chunk.js": "/Aluraflix/static/js/787.a582c3f2.chunk.js",
+    "static/media/banner.png": "/Aluraflix/static/media/banner.54249eb4da785d37b570.png",
+    "static/media/Logo.png": "/Aluraflix/static/media/Logo.3785e6f59ef26f0f336e.png",
+    "index.html": "/Aluraflix/index.html",
+    "main.3e05ea8f.css.map": "/Aluraflix/static/css/main.3e05ea8f.css.map",
+    "main.b375eac0.js.map": "/Aluraflix/static/js/main.b375eac0.js.map",
+    "787.a582c3f2.chunk.js.map": "/Aluraflix/static/js/787.a582c3f2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3e05ea8f.css",
-    "static/js/main.8c0db413.js"
+    "static/js/main.b375eac0.js"
   ]
 }
