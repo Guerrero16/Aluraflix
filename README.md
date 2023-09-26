@@ -22,7 +22,7 @@ AluraFlix es un Reto del programa de Oracle Next Education y Alura Latan. El cua
 - `Funcionalidad 2:`: Listado, registro, actualización y elimnación de videos 
 ## Acceso al proyecto
 [Fake-API](https://650e5ce7a8b42265ec2d0921.mockapi.io/)
-[Demo]()
+[Demo](https://651223a6da2a790d31d33d0a--elegant-pastelito-49a222.netlify.app/)
 ## Tecnologías utilizadas
 - React
 - Swiper
